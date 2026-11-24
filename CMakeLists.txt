@@ -39,6 +39,7 @@ set(FETCHCONTENT_UPDATES_DISCONNECTED ON CACHE INTERNAL "Override update strateg
 # NOTE: Also update env vars used for caching in
 #     - .github/actions/configure-cmake/action.yml
 #     - .github/workflows/cmake.yml
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 FetchContent_Declare(
         SFML
         SYSTEM
