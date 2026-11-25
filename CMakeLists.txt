@@ -44,11 +44,14 @@ FetchContent_Declare(
         SFML
         SYSTEM
         GIT_REPOSITORY https://github.com/SFML/SFML.git
-        GIT_TAG        3.0.0
+        GIT_TAG        3.0.2
         GIT_SHALLOW    1
         GIT_PROGRESS   ON
 )
 
+if(MSVC)
+    add_compile_definitions(_DISABLE_STRING_ANNOTATION=1 _DISABLE_VECTOR_ANNOTATION=1 _DISABLE_OPTIONAL_ANNOTATION=1)
+endif()
 FetchContent_MakeAvailable(SFML)
 
 
