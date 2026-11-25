@@ -79,7 +79,7 @@ add_executable(${MAIN_EXECUTABLE_NAME}
 if(APPLE)
     set_target_properties(${MAIN_EXECUTABLE_NAME} PROPERTIES
             BUILD_WITH_INSTALL_RPATH ON
-            INSTALL_RPATH "@executable_path")
+            INSTALL_RPATH "@executable_path;@executable_path/lib")
 endif()
 
 target_sources(${MAIN_LIBRARY_NAME}
