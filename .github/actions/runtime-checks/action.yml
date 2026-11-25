@@ -38,7 +38,7 @@ runs:
       if: runner.os != 'Windows' && (runner.os == 'macOS' || (matrix.runs_asan != true && matrix.runs_valgrind != true))
       run: |
         cd "${{ env.ZIP_NAME }}" && \
-          cat "${INPUT_FILENAME}" | tr -d '\r' | ./"${EXECUTABLE_NAME}" && \
+          cat "${INPUT_FILENAME}" | tr -d '\r' | xvfb-run -a ./"${EXECUTABLE_NAME}"
           ./"${TESTS_EXECUTABLE_NAME}" && echo "All tests pass"
 
     - name: Smoke test (Windows)

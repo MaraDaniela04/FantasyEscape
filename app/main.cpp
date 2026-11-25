@@ -11,6 +11,8 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics.hpp>
+#include <cstdlib>
+const bool ciRun = std::getenv("CI") != nullptr;
 
 class Item {
     sf::Texture ItemTexture;
@@ -363,6 +365,8 @@ int main() {
     std::cout << hotbar << std::endl;
 
     while (window.isOpen()) {
+        if (ciRun) window.close();
+
         while (const std::optional event = window.pollEvent()) {
             if (event->is<sf::Event::Closed>()) {
                 window.close();
