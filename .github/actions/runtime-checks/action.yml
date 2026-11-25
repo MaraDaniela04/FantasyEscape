@@ -13,7 +13,7 @@ runs:
       #   ASAN_OPTIONS: detect_leaks=1
       run: |
         cd "${{ env.ZIP_NAME }}" && \
-          cat "${INPUT_FILENAME}" | tr -d '\r' | ./"${EXECUTABLE_NAME}" && \
+          cat "${INPUT_FILENAME}" | tr -d '\r' | xvfb-run -a ./"${EXECUTABLE_NAME}" && \
           ./"${TESTS_EXECUTABLE_NAME}" && echo "All tests pass"
 
     - name: Sanitizers (Windows MSVC)
@@ -23,7 +23,8 @@ runs:
       continue-on-error: true
       run: |
         cd "${{ env.ZIP_NAME }}" && \
-          cat "${INPUT_FILENAME}" | tr -d '\r' | xvfb-run -a ./"${EXECUTABLE_NAME}"
+          cat "${INPUT_FILENAME}" | tr -d '\r' | ./"${EXECUTABLE_NAME}" && \
+          ./"${TESTS_EXECUTABLE_NAME}" && echo "All tests pass"
 
     - name: Valgrind
       shell: bash
