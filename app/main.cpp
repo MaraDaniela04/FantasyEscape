@@ -57,7 +57,7 @@ public:
     bool isEmpty() const { return empty; }
 
     bool isTaken() const { return taken; }
-    void setTaken(bool t) { taken = t; }
+    void setTaken(const bool t) { taken = t; }
 
     void setPosition(const sf::Vector2f position, const float size){
         const auto textureSize = ItemTexture.getSize();
@@ -259,9 +259,9 @@ class Scene {
     static Direction opposite(const Direction d) {
         switch (d) {
             case Direction::Left: return Direction::Right;
-                case Direction::Up: return Direction::Down;
-                case Direction::Right: return Direction::Left;
-                case Direction::Down: return Direction::Up;
+            case Direction::Up: return Direction::Down;
+            case Direction::Right: return Direction::Left;
+            case Direction::Down: return Direction::Up;
         }
         return d;
     }
@@ -269,8 +269,8 @@ class Scene {
     const MovementArrows &arrow(const Direction d) const {
         switch (d) {
             case Direction::Left: return leftArrow;
-                case Direction::Up: return upArrow;
-                case Direction::Right: return rightArrow;
+            case Direction::Up: return upArrow;
+            case Direction::Right: return rightArrow;
             default: return downArrow;
         }
     }
@@ -322,7 +322,6 @@ public:
         }
         return this;
     }
-
 };
 
 int main() {
