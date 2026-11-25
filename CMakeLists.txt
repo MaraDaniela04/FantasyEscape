@@ -52,6 +52,9 @@ FetchContent_Declare(
 if(MSVC)
     add_compile_definitions(_DISABLE_STRING_ANNOTATION=1 _DISABLE_VECTOR_ANNOTATION=1 _DISABLE_OPTIONAL_ANNOTATION=1)
 endif()
+if(APPLE)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -include ostream")
+endif()
 FetchContent_MakeAvailable(SFML)
 
 
