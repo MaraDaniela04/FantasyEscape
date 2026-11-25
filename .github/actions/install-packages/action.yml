@@ -5,12 +5,12 @@ runs:
   using: "composite"
   steps:
     # Common Linux dependencies
-    - - name: Install Linux Dependencies
-    - shell: bash
-    - if: runner.os == 'Linux'
-    - run: |
-    - sudo apt-get update
-    - sudo apt-get install -y ninja-build libxrandr-dev libxcursor-dev libxi-dev libudev-dev libgl1-mesa-dev libfreetype-dev
+    - name: Install Linux Dependencies
+      shell: bash
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ninja-build libxrandr-dev libxcursor-dev libxi-dev libudev-dev libgl1-mesa-dev libfreetype-dev
 
     - name: Install valgrind
       shell: bash
