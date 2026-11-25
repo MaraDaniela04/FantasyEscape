@@ -1,6 +1,7 @@
-# Nu primesc notă pentru că nu am pus titlu și descriere
+# Fantasy Escape
 
-### Folosiți template-ul corespunzător grupei voastre!
+### Descriere
+FantasyEscape este un joc de tip escape room in care protagonistul trebuie sa evadeze dintr-o lume fantastica, rezolvand diferite puzzle-uri.
 
 | Laborant  | Link template                                |
 |-----------|----------------------------------------------|
