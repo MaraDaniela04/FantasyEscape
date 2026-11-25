@@ -75,6 +75,13 @@ add_library(${MAIN_LIBRARY_NAME} STATIC)
 add_executable(${MAIN_EXECUTABLE_NAME}
         app/main.cpp
 )
+
+if(APPLE)
+    set_target_properties(${MAIN_EXECUTABLE_NAME} PROPERTIES
+            BUILD_WITH_INSTALL_RPATH ON
+            INSTALL_RPATH "@executable_path")
+endif()
+
 target_sources(${MAIN_LIBRARY_NAME}
         PRIVATE
         src/Example.cpp
