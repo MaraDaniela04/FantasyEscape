@@ -23,14 +23,14 @@ runs:
       continue-on-error: true
       run: |
         cd "${{ env.ZIP_NAME }}" && \
-          cat "${INPUT_FILENAME}" | ./"${EXECUTABLE_NAME}".exe && \
+          cat "${INPUT_FILENAME}" | tr -d '\r' | xvfb-run -a ./"${EXECUTABLE_NAME}"
           ./"${TESTS_EXECUTABLE_NAME}".exe && echo "All tests pass"
 
     - name: Valgrind
       shell: bash
       if: runner.os == 'Linux' && matrix.runs_valgrind == true
       run: |
-        cd "${{ env.ZIP_NAME }}" && bash ../scripts/run_valgrind.sh .
+        cd "${{ env.ZIP_NAME }}" && xvfb-run -a bash ../scripts/run_valgrind.sh .
 
     - name: Smoke test
       # until we have a proper test env, we cannot fix ASan reliably
