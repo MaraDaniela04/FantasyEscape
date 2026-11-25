@@ -33,13 +33,14 @@ runs:
         cd "${{ env.ZIP_NAME }}" && xvfb-run -a bash ../scripts/run_valgrind.sh .
 
     - name: Smoke test
-      # until we have a proper test env, we cannot fix ASan reliably
       shell: bash
-      if: runner.os != 'Windows' && (runner.os == 'macOS' || (matrix.runs_asan != true && matrix.runs_valgrind != true))
       run: |
-        cd "${{ env.ZIP_NAME }}" && \
-          cat "${INPUT_FILENAME}" | tr -d '\r' | xvfb-run -a ./"${EXECUTABLE_NAME}"
-          ./"${TESTS_EXECUTABLE_NAME}" && echo "All tests pass"
+        cd "${{ inputs.build-dir }}"
+        if [[ "$RUNNER_OS" == "Linux" ]]; then
+          xvfb-run -a ./MyApp --smoke-test
+        else
+          ./MyApp --smoke-test
+        fi
 
     - name: Smoke test (Windows)
       shell: bash
