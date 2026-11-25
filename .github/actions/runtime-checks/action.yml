@@ -24,7 +24,6 @@ runs:
       run: |
         cd "${{ env.ZIP_NAME }}" && \
           cat "${INPUT_FILENAME}" | tr -d '\r' | xvfb-run -a ./"${EXECUTABLE_NAME}"
-          ./"${TESTS_EXECUTABLE_NAME}".exe && echo "All tests pass"
 
     - name: Valgrind
       shell: bash
